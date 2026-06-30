@@ -1063,13 +1063,20 @@
 
       <div class="sec-h">Ton abonnement</div>
       <div class="diag">
-        <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px"><span style="font-size:26px">⭐</span><div><b style="font-size:15px">Créateur</b><div style="font-size:12.5px;color:#9aa0b4">39 €/mois · 50 crédits/mois · Studio + Trends</div></div></div>
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px"><span style="font-size:26px">⭐</span><div><b style="font-size:15px">Créateur</b><div style="font-size:12.5px;color:#9aa0b4">29,99 €/mois · 25 crédits Studio/mois · 1 compte</div></div></div>
         <div style="display:flex;flex-direction:column;gap:8px">
           <button class="btn light" onclick="abonAction('changer')">Changer de formule</button>
           <button class="freelink" onclick="abonAction('pause')">⏸ Mettre mon abo en pause</button>
           <button class="freelink" onclick="abonAction('resilier')" style="color:#ff8e8e">Résilier mon abonnement</button>
         </div>
         <div id="abonMsg" style="font-size:12.5px;color:#9aa0b4;margin-top:10px"></div>
+      </div>
+
+      <div class="sec-h">Tes crédits Studio</div>
+      <div class="diag">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:12px"><span style="font-size:24px">🎟️</span><div><b style="font-size:17px"><span id="credBal">32</span> crédits</b><div style="font-size:12px;color:#9aa0b4">se rechargent le 1er du mois</div></div></div>
+        <button class="btn light" onclick="toggleCredits()">Acheter des crédits</button>
+        <div style="font-size:12px;color:#9aa0b4;margin-top:9px;line-height:1.5">Les crédits servent à générer tes vidéos (Mode Studio) et à analyser une vidéo importée.</div>
       </div>
 
       <div class="sec-h">Ton compte</div>
@@ -1086,6 +1093,25 @@
       <div class="acct" id="acctBiz" onclick="setAccount(false);toggleAccts()"><div class="aav" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=70')"></div><div><b>@julien.biz</b><small>Business · non connecté</small></div><span class="chk">✓</span></div>
       <div class="addacct" onclick="toggleAccts()">+ Ajouter un compte <span style="color:#9aa0b4;font-weight:500">· connecter ou mini-questionnaire</span></div>
       <p class="note" style="margin-top:13px;line-height:1.5">💡 <b style="color:#cfd2e0">1 niche = 1 compte.</b> Ton coach, tes stats et tes conseils s'adaptent au compte actif — change en 1 tap, quand tu veux.</p>
+    </div>
+  </div>
+
+  <!-- ACHAT DE CRÉDITS -->
+  <div class="sheet" id="creditSheet" onclick="if(event.target===this)toggleCredits()">
+    <div class="sheetc">
+      <div class="sheeth">Recharger des crédits</div>
+      <div onclick="buyCredits('30')" style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:13px;margin-bottom:10px;cursor:pointer">
+        <span style="font-size:24px">🎟️</span>
+        <div style="flex:1"><b style="font-size:14px">30 crédits</b><div style="font-size:11.5px;color:#9aa0b4">≈ 5 à 10 vidéos Studio</div></div>
+        <b style="font-size:16px">9,90€</b>
+      </div>
+      <div onclick="buyCredits('100')" style="display:flex;align-items:center;gap:12px;background:linear-gradient(120deg,rgba(20,127,251,.1),rgba(148,14,251,.13));border:1.5px solid var(--purple-s);border-radius:14px;padding:13px;margin-bottom:6px;cursor:pointer;position:relative">
+        <span style="position:absolute;top:-9px;right:12px;font-size:9px;font-weight:800;letter-spacing:.4px;color:#fff;background:linear-gradient(135deg,#147FFB,#940EFB);padding:3px 9px;border-radius:14px">LE + AVANTAGEUX</span>
+        <span style="font-size:24px">🎟️</span>
+        <div style="flex:1"><b style="font-size:14px">100 crédits</b><div style="font-size:11.5px;color:#9aa0b4">≈ 18 à 35 vidéos Studio</div></div>
+        <b style="font-size:16px">24,90€</b>
+      </div>
+      <p class="note" style="margin-top:12px;line-height:1.5">💡 Les crédits achetés <b style="color:#cfd2e0">n'expirent pas</b> et s'ajoutent à ceux de ton abo.</p>
     </div>
   </div>
 
@@ -1147,6 +1173,8 @@
   }
   const _F=['lesson','messtats','coachchat','nichefinder','nicheresult','reglages']; _F.forEach(x=>{ if(!FLOW.includes(x)) FLOW.push(x); });
   function toggleAccts(){ document.getElementById('acctSheet').classList.toggle('show'); }
+  function toggleCredits(){ document.getElementById('creditSheet').classList.toggle('show'); }
+  function buyCredits(n){ var b=document.getElementById('credBal'); if(b){ b.textContent=(parseInt(b.textContent,10)||0)+parseInt(n,10); } toggleCredits(); try{ confetti(); }catch(e){} }
   function setAccount(connected){
     connectedAccount = connected ? accountFromPreset(curAvatar) : null;
     document.getElementById('dashFull').style.display = connected ? '' : 'none';
@@ -2073,6 +2101,6 @@
   function openCreate(){ go('creer_start'); }
   function tgl(el){ el.classList.toggle('off'); }
 </script>
-<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 59 ✅</div>
+<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 66 ✅</div>
 </body>
 </html>
