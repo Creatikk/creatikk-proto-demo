@@ -936,19 +936,27 @@
 
     <!-- PAYWALL -->
     <section class="screen" id="paywall">
-      <h2 class="typed" id="pw_title">Lance ta machine</h2>
-      <p class="sub" id="pw_sub">Choisis ta formule et débloque tout ton plan.</p>
-      <div class="pw-bonus"><span class="pb-ic"><svg viewBox="0 0 24 24" style="width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block"><path d="M20 12v9H4v-9"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span><div><b>+20 crédits offerts</b> pour ta 1re vidéo si tu démarres aujourd'hui</div></div>
-      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px">
-        <span style="font-size:12px;font-weight:700;color:#cfd2e0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:6px 11px">🎯 Idée du jour</span>
-        <span style="font-size:12px;font-weight:700;color:#cfd2e0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:6px 11px">💬 Chat IA</span>
-        <span style="font-size:12px;font-weight:700;color:#cfd2e0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:6px 11px">📅 Planning</span>
-        <span style="font-size:12px;font-weight:700;color:#cfd2e0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:6px 11px">📊 Analyse vidéo</span>
-        <span style="font-size:12px;font-weight:700;color:#cfd2e0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:6px 11px">🎬 Studio vidéo</span>
-      </div>
+      <h2 class="typed" id="pw_title">Choisis ta formule</h2>
+      <p class="sub" id="pw_sub">Tout le produit en illimité — tu choisis juste ton volume.</p>
       <div class="toggle"><button class="on" id="tg_year" onclick="setBilling('year')">Annuel · jusqu'à -65% 🔥</button><button id="tg_month" onclick="setBilling('month')">Mensuel</button></div>
-      <div class="plan best" onclick="selectPlan(this)"><div class="reco">LE + POPULAIRE</div><div class="pn">Créateur</div><div class="pd">Pour percer sur 1 niche</div><div class="pp" data-y="119€<small> /an · soit 9,99€/mois</small>" data-m="29,90€<small> /mois</small>">119€<small> /an · soit 9,99€/mois</small></div><div style="font-size:12.5px;color:#cfd2e0;line-height:1.8;margin-top:11px;text-align:left">✓ Tout le produit guidé, en <b>illimité</b><br>✓ 1 niche · 25 crédits vidéo/mois<br>✓ Analyses vidéo : <b>limitées</b> (~10/mois)<br>✓ Publication multi-réseaux</div></div>
-      <div class="plan" onclick="selectPlan(this)"><div class="pn">Pro</div><div class="pd">Plusieurs niches · gros volume</div><div class="pp" data-y="228€<small> /an · soit 19€/mois</small>" data-m="49,90€<small> /mois</small>">228€<small> /an · soit 19€/mois</small></div><div style="font-size:12.5px;color:#cfd2e0;line-height:1.8;margin-top:11px;text-align:left">✓ Tout Créateur, +<br>✓ <b>Plusieurs niches</b> (jusqu'à 5)<br>✓ 100 crédits vidéo/mois<br><span style="color:#ffd166">★</span> <b style="color:#fff">Analyses vidéo ILLIMITÉES</b><br>✓ Modèles premium + 4K + priorité</div></div>
+      <div style="display:flex;gap:10px;align-items:stretch">
+        <div class="plan" onclick="selectPlan(this)" style="flex:1;margin:0;padding:16px 12px;display:flex;flex-direction:column;text-align:center">
+          <div class="pn">Créateur</div>
+          <div class="pd" style="min-height:30px">Percer sur 1 niche</div>
+          <div class="pp" data-y="9,99€<small>/mois</small>" data-m="29,90€<small>/mois</small>" style="font-size:25px;margin:6px 0 1px">9,99€<small>/mois</small></div>
+          <div class="bill" data-y="facturé 119€/an" data-m="sans engagement" style="font-size:11px;color:var(--muted);margin-bottom:13px">facturé 119€/an</div>
+          <div style="text-align:left;font-size:12px;color:#cfd2e0;line-height:1.95">✓ 1 niche<br>✓ 25 crédits vidéo/mois<br>✓ 10 analyses vidéo/mois</div>
+        </div>
+        <div class="plan best" onclick="selectPlan(this)" style="flex:1;margin:0;padding:16px 12px;display:flex;flex-direction:column;text-align:center">
+          <div class="reco">RECOMMANDÉ</div>
+          <div class="pn">Pro</div>
+          <div class="pd" style="min-height:30px">Plusieurs niches</div>
+          <div class="pp" data-y="19€<small>/mois</small>" data-m="49,90€<small>/mois</small>" style="font-size:25px;margin:6px 0 1px">19€<small>/mois</small></div>
+          <div class="bill" data-y="facturé 228€/an" data-m="sans engagement" style="font-size:11px;color:var(--muted);margin-bottom:13px">facturé 228€/an</div>
+          <div style="text-align:left;font-size:12px;color:#cfd2e0;line-height:1.95">✓ <b>5 niches</b><br>✓ 100 crédits vidéo/mois<br><span style="color:#ffd166">★</span> <b style="color:#fff">Analyses illimitées</b><br>✓ Modèles premium + 4K<br>✓ Génération prioritaire</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin:13px 0 14px;font-size:12.5px;color:#cfd2e0;line-height:1.65"><b style="color:#fff">Inclus dans les 2 :</b> idée du jour, planning 30 jours, scripts illimités, chat IA, analyse vidéo, conseils, potentiel de revenus, publication multi-réseaux — et rachat de crédits possible.</div>
       <div class="anchor">
         <div class="ar"><span>Un monteur freelance</span><span>~30€ / vidéo</span></div>
         <div class="ar"><span>Une agence de contenu</span><span>~800€ / mois</span></div>
@@ -2031,6 +2039,7 @@
     document.getElementById('tg_year').classList.toggle('on',b==='year');
     document.getElementById('tg_month').classList.toggle('on',b==='month');
     document.querySelectorAll('#paywall .pp').forEach(p=>{ p.innerHTML = b==='year'?p.dataset.y:p.dataset.m; });
+    document.querySelectorAll('#paywall .bill').forEach(el=>{ el.textContent = b==='year'?el.dataset.y:el.dataset.m; });
   }
   function selectPlan(el){ document.querySelectorAll('#paywall .plan').forEach(p=>p.classList.remove('best')); el.classList.add('best'); }
   const RHY={
@@ -2090,6 +2099,6 @@
     else if(document.getElementById(_id)){ try{ go(_id); }catch(e){} }
   }
 </script>
-<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 60 ✅</div>
+<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 61 ✅</div>
 </body>
 </html>
