@@ -1,0 +1,8 @@
+{
+  "name": "creatikk-cerveau-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Serveur de demo IA (cerveau) pour la maquette Creatikk - zero dependance.",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node server.js" }
+}

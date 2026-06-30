@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Creatikk — Maquette cliquable</title>
+<style>
+  :root{ color-scheme: dark; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; min-height:100vh; background:#070509; color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:28px; }
+  .wrap{ width:100%; max-width:440px; }
+  .logo{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .logo img{ width:34px; height:34px; }
+  .logo b{ font-size:22px; letter-spacing:-.3px; }
+  .logo b span{ color:#7c5cff; }
+  h1{ font-size:24px; margin:14px 0 6px; letter-spacing:-.4px; }
+  p.sub{ color:#a7a3b8; font-size:14.5px; line-height:1.5; margin:0 0 22px; }
+  a.card{ display:flex; align-items:center; gap:14px; text-decoration:none; color:#fff;
+    background:#141019; border:1px solid rgba(255,255,255,.10); border-radius:16px; padding:16px 18px; margin-bottom:12px; transition:.15s; }
+  a.card:hover{ border-color:#7c5cff; transform:translateY(-1px); }
+  .ic{ flex:none; width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px;
+    background:linear-gradient(135deg,#147FFB,#940EFB); }
+  .ct b{ display:block; font-size:16px; }
+  .ct small{ color:#a7a3b8; font-size:13px; }
+  .arrow{ margin-left:auto; color:#7c5cff; font-size:20px; }
+  .note{ margin-top:18px; font-size:12.5px; color:#7d7990; line-height:1.5; border-top:1px solid rgba(255,255,255,.08); padding-top:14px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo"><img src="creatikk_assets/icon.svg" alt=""><b>Creati<span>kk</span></b></div>
+    <h1>La maquette, en vrai</h1>
+    <p class="sub">Clique pour parcourir le produit comme un utilisateur. L'IA est branchée — les idées, scripts et analyses sont générés en direct.</p>
+
+    <a class="card" id="lnk-tunnel" href="creatikk_onboarding_prototype.html">
+      <div class="ic">🚀</div>
+      <div class="ct"><b>Le tunnel d'onboarding</b><small>De la landing au paiement → dashboard</small></div>
+      <div class="arrow">→</div>
+    </a>
+
+    <a class="card" id="lnk-dash" href="creatikk_dashboard_prototype.html">
+      <div class="ic">🧠</div>
+      <div class="ct"><b>Le dashboard coach</b><small>Idée du jour, planning, script, revenus…</small></div>
+      <div class="arrow">→</div>
+    </a>
+
+    <div class="note" id="note">
+      Maquette de travail (pas le produit final). Astuce : si le 1er chargement IA est lent (~1 min),
+      c'est le serveur de démo qui sort de veille — ensuite c'est rapide.
+    </div>
+  </div>
+
+<script>
+  // Propage le paramètre ?api= (URL du cerveau) vers les deux maquettes.
+  (function(){
+    var api = new URLSearchParams(location.search).get('api');
+    if(api){
+      try{ localStorage.setItem('ck_api', api); }catch(e){}
+      var q = '?api=' + encodeURIComponent(api);
+      document.getElementById('lnk-tunnel').href = 'creatikk_onboarding_prototype.html' + q;
+      document.getElementById('lnk-dash').href   = 'creatikk_dashboard_prototype.html' + q;
+    } else {
+      document.getElementById('note').innerHTML += '<br><b style="color:#e0a93a">⚠️ Aucun cerveau configuré (?api= manquant) — l\'IA tournera en mode secours.</b>';
+    }
+  })();
+</script>
+</body>
+</html>

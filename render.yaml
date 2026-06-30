@@ -1,0 +1,21 @@
+services:
+  # --- Le cerveau IA (serveur Node, appelle Claude) ---
+  - type: web
+    name: creatikk-cerveau
+    runtime: node
+    rootDir: cerveau
+    plan: free
+    buildCommand: ""
+    startCommand: node server.js
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false            # secret : à coller dans le dashboard Render
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-4-6
+
+  # --- La maquette cliquable (tunnel + dashboard, statique) ---
+  - type: web
+    name: creatikk-proto
+    runtime: static
+    plan: free
+    staticPublishPath: ./public
