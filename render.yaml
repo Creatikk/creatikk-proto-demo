@@ -17,5 +17,4 @@ services:
   - type: web
     name: creatikk-proto
     runtime: static
-    plan: free
     staticPublishPath: ./public
