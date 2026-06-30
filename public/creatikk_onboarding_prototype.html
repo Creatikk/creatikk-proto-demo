@@ -276,6 +276,24 @@
   .plan .pd{font-size:12px;color:var(--muted);margin-top:2px}
   .plan .pp{font-size:20px;font-weight:800;margin-top:6px}
   .plan .pp small{font-size:12px;color:var(--muted);font-weight:500}
+  /* --- Pricing premium --- */
+  .pwc{display:flex;gap:11px;align-items:stretch;margin-bottom:13px}
+  .pwc-card{flex:1;min-width:0;position:relative;border-radius:18px;padding:20px 13px 18px;background:#15131e;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
+  .pwc-card.reco{background:radial-gradient(125% 95% at 50% -5%,rgba(148,14,251,.28),rgba(21,19,30,.5) 58%);border-color:transparent;box-shadow:0 0 0 1.5px rgba(148,14,251,.75),0 20px 55px -20px rgba(148,14,251,.85)}
+  .pwc-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:800;letter-spacing:.7px;color:#fff;background:linear-gradient(135deg,#147FFB,#940EFB);padding:5px 13px;border-radius:20px;box-shadow:0 7px 18px -4px rgba(148,14,251,.85);white-space:nowrap}
+  .pwc-name{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .pwc-tag{font-size:11px;color:var(--muted);margin-top:3px;min-height:26px;line-height:1.3}
+  .pwc-price{font-weight:900;letter-spacing:-1.5px;line-height:1;margin-top:7px;font-size:31px;background:linear-gradient(90deg,#fff,#cfd2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pwc-price .u{font-size:13px;font-weight:700;letter-spacing:0;-webkit-text-fill-color:#9aa0b4}
+  .pwc-bill{font-size:10.5px;color:#8a90a4;margin-top:6px;font-weight:600}
+  .pwc-sep{height:1px;background:rgba(255,255,255,.09);margin:14px 0 13px}
+  .pwc-f{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#d6d9e6;line-height:1.3;text-align:left;margin-bottom:9px}
+  .pwc-f:last-child{margin-bottom:0}
+  .pwc-f .ck{width:17px;height:17px;flex:none;border-radius:6px;background:rgba(35,201,167,.16);display:flex;align-items:center;justify-content:center}
+  .pwc-f .ck svg{width:11px;height:11px;stroke:#23c9a7;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .pwc-f.hl{color:#fff;font-weight:700}
+  .pwc-f.hl .ck{background:rgba(255,209,102,.22)}
+  .pwc-f.hl .ck svg{stroke:#ffd166}
   .guarantee{display:flex;align-items:center;gap:8px;justify-content:center;font-size:12.5px;color:#bdf3e8;margin:4px 0 14px}
   .guarantee svg{width:16px;height:16px;stroke:var(--teal)}
 
@@ -939,21 +957,29 @@
       <h2 class="typed" id="pw_title">Choisis ta formule</h2>
       <p class="sub" id="pw_sub">Tout le produit en illimité — tu choisis juste ton volume.</p>
       <div class="toggle"><button class="on" id="tg_year" onclick="setBilling('year')">Annuel · jusqu'à -65% 🔥</button><button id="tg_month" onclick="setBilling('month')">Mensuel</button></div>
-      <div style="display:flex;gap:10px;align-items:stretch">
-        <div class="plan" onclick="selectPlan(this)" style="flex:1;margin:0;padding:16px 12px;display:flex;flex-direction:column;text-align:center">
-          <div class="pn">Créateur</div>
-          <div class="pd" style="min-height:30px">Percer sur 1 niche</div>
-          <div class="pp" data-y="9,99€<small>/mois</small>" data-m="29,90€<small>/mois</small>" style="font-size:25px;margin:6px 0 1px">9,99€<small>/mois</small></div>
-          <div class="bill" data-y="facturé 119€/an" data-m="sans engagement" style="font-size:11px;color:var(--muted);margin-bottom:13px">facturé 119€/an</div>
-          <div style="text-align:left;font-size:12px;color:#cfd2e0;line-height:1.95">✓ 1 niche<br>✓ 25 crédits vidéo/mois<br>✓ 10 analyses vidéo/mois</div>
+      <div class="pwc">
+        <div class="pwc-card">
+          <div class="pwc-name">Créateur</div>
+          <div class="pwc-tag">Pour percer sur 1 niche</div>
+          <div class="pwc-price pp" data-y="9,99€<span class='u'>/mois</span>" data-m="29,90€<span class='u'>/mois</span>">9,99€<span class="u">/mois</span></div>
+          <div class="pwc-bill bill" data-y="soit 119€ facturés/an" data-m="sans engagement">soit 119€ facturés/an</div>
+          <div class="pwc-sep"></div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>1 niche</div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>25 crédits vidéo / mois</div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>10 analyses vidéo / mois</div>
         </div>
-        <div class="plan best" onclick="selectPlan(this)" style="flex:1;margin:0;padding:16px 12px;display:flex;flex-direction:column;text-align:center">
-          <div class="reco">RECOMMANDÉ</div>
-          <div class="pn">Pro</div>
-          <div class="pd" style="min-height:30px">Plusieurs niches</div>
-          <div class="pp" data-y="19€<small>/mois</small>" data-m="49,90€<small>/mois</small>" style="font-size:25px;margin:6px 0 1px">19€<small>/mois</small></div>
-          <div class="bill" data-y="facturé 228€/an" data-m="sans engagement" style="font-size:11px;color:var(--muted);margin-bottom:13px">facturé 228€/an</div>
-          <div style="text-align:left;font-size:12px;color:#cfd2e0;line-height:1.95">✓ <b>5 niches</b><br>✓ 100 crédits vidéo/mois<br><span style="color:#ffd166">★</span> <b style="color:#fff">Analyses illimitées</b><br>✓ Modèles premium + 4K<br>✓ Génération prioritaire</div>
+        <div class="pwc-card reco">
+          <div class="pwc-badge">★ RECOMMANDÉ</div>
+          <div class="pwc-name">Pro</div>
+          <div class="pwc-tag">Pour plusieurs niches</div>
+          <div class="pwc-price pp" data-y="19€<span class='u'>/mois</span>" data-m="49,90€<span class='u'>/mois</span>">19€<span class="u">/mois</span></div>
+          <div class="pwc-bill bill" data-y="soit 228€ facturés/an" data-m="sans engagement">soit 228€ facturés/an</div>
+          <div class="pwc-sep"></div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span><b>5 niches</b></div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>100 crédits vidéo / mois</div>
+          <div class="pwc-f hl"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>Analyses illimitées</div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>Modèles premium + 4K</div>
+          <div class="pwc-f"><span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></span>Génération prioritaire</div>
         </div>
       </div>
       <div style="background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:13px;padding:12px 14px;margin:13px 0 14px;font-size:12.5px;color:#cfd2e0;line-height:1.65"><b style="color:#fff">Inclus dans les 2 :</b> idée du jour, planning 30 jours, scripts illimités, chat IA, analyse vidéo, conseils, potentiel de revenus, publication multi-réseaux — et rachat de crédits possible.</div>
@@ -2099,6 +2125,6 @@
     else if(document.getElementById(_id)){ try{ go(_id); }catch(e){} }
   }
 </script>
-<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 61 ✅</div>
+<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 62 ✅</div>
 </body>
 </html>
