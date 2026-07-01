@@ -342,6 +342,43 @@
   .avwrap{position:relative;cursor:pointer;flex:none}
   .avcaret{position:absolute;right:-3px;bottom:-3px;width:17px;height:17px;border-radius:50%;background:#1b1626;border:1.5px solid #070509;display:flex;align-items:center;justify-content:center}
   .avcaret svg{width:10px;height:10px;stroke:#cfd2e0;fill:none;stroke-width:2.6}
+  /* objectifs (multi-sélection dans la feuille niche) */
+  .objchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .objchip{font-size:12.5px;font-weight:700;color:#cfd2e0;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);border-radius:20px;padding:8px 12px;cursor:pointer;transition:.15s}
+  .objchip.sel{color:#fff;background:linear-gradient(120deg,rgba(20,127,251,.28),rgba(148,14,251,.28));border-color:rgba(148,14,251,.65)}
+  /* profil de compte (bilan) */
+  .pfhero{position:relative;display:flex;align-items:center;gap:14px;padding:18px;border-radius:20px;margin-bottom:14px;background:linear-gradient(135deg,rgba(20,127,251,.16),rgba(148,14,251,.2));border:1px solid rgba(148,14,251,.3);overflow:hidden}
+  .pfhero::after{content:"";position:absolute;top:-40%;right:-20%;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(148,14,251,.4),transparent 70%);filter:blur(8px);pointer-events:none}
+  .pfav{width:66px;height:66px;border-radius:50%;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.6);flex:none;box-shadow:0 6px 18px rgba(0,0,0,.4);position:relative;z-index:1}
+  .pfid{min-width:0;flex:1;position:relative;z-index:1}
+  .pfname{font-size:19px;font-weight:900;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .pfplat{font-size:10px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:#cfd2e0;background:rgba(255,255,255,.1);border:1px solid var(--border);padding:2px 7px;border-radius:20px}
+  .pfniche{margin-top:5px;font-size:12.5px;color:#e5e0f2;font-weight:700}
+  .pfbadge{position:absolute;top:14px;right:14px;z-index:1;font-size:10px;font-weight:800;letter-spacing:.3px;color:#0b0810;background:linear-gradient(90deg,#ffd166,#ffb020);padding:4px 9px;border-radius:20px}
+  .pfstats{display:flex;gap:9px;margin-bottom:14px}
+  .pfstats>div{flex:1;text-align:center;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 6px}
+  .pfstats b{font-size:19px;font-weight:900;display:block;background:linear-gradient(90deg,#3a9bff,#c98bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pfstats small{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.3px;font-weight:700;display:block;margin-top:4px}
+  .pfpos{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px 15px;margin-bottom:16px}
+  .pfpos span{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:800;color:var(--purple-s)}
+  .pfpos p{margin:6px 0 0;font-size:14px;line-height:1.5;color:#e8e9f0}
+  .pfsync{font-size:12px;font-weight:700;margin:-6px 2px 16px}
+  .pfgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:6px}
+  .pfcell{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 13px}
+  .pfcell .pfk{font-size:10px;letter-spacing:.4px;text-transform:uppercase;font-weight:700;color:var(--muted);display:block;margin-bottom:5px}
+  .pfcell b{font-size:14.5px;font-weight:800;color:#fff}
+  .pfcell b.up{color:#2fe0c2}
+  .pflist{display:flex;flex-direction:column;gap:9px;margin-bottom:6px}
+  .pfrow{display:flex;gap:11px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 13px}
+  .pfrow .pfi{flex:none;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;margin-top:1px}
+  .pfi.ok{background:rgba(47,224,194,.16);color:#2fe0c2;border:1px solid rgba(47,224,194,.35)}
+  .pfi.warn{background:rgba(255,180,32,.14);color:#ffb020;border:1px solid rgba(255,180,32,.35)}
+  .pfrow p{margin:0;font-size:13.5px;line-height:1.45;color:#e8e9f0}
+  .pfaction{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,rgba(20,127,251,.14),rgba(148,14,251,.16));border:1px solid rgba(148,14,251,.28);border-radius:18px;padding:15px;margin:16px 0 4px}
+  .pfaction>div{flex:1;min-width:0}
+  .pfaction b{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:5px}
+  .pfaction p{margin:0;font-size:13.5px;line-height:1.4;color:#fff;font-weight:600}
+  .pfaction .btn{width:auto;flex:none;padding:11px 15px;font-size:13px}
   /* onboarding tour */
   #tour{display:none;position:absolute;inset:0;z-index:60}
   .tour-spot{position:absolute;border-radius:14px;background:transparent;box-shadow:0 0 0 9999px rgba(5,4,8,.82);transition:top .25s,left .25s,width .25s,height .25s;pointer-events:none}
@@ -576,13 +613,12 @@
 
   <!-- ACCUEIL -->
   <section class="screen on" id="accueil">
-    <div class="demobar">🎬 Démo · Avatar <select id="avatarSel" onchange="testAvatar(this.value)"><option value="jeune">1 · Jeune débutant</option><option value="novice">2 · Adulte novice</option><option value="business">3 · Business / marque</option><option value="etabli">4 · Créateur établi</option><option value="interm">5 · Intermédiaire</option><option value="bloque">6 · Bloqué</option><option value="agence">7 · Agence</option><option value="expert">8 · Expert / autorité</option><option value="faceless">9 · Faceless</option></select></div>
     <div class="top">
       <div class="logo"><img src="creatikk_assets/icon.svg" alt=""><span>Creati<span class="cy">kk</span></span></div>
       <div class="streak"><svg viewBox="0 0 24 24"><path d="M12 3c1 4 5 5 5 9a5 5 0 1 1-9.6 1.9C7 11 9 10 9 7c1.4 1 2 2.5 2 4 1.6 0 2-2 1-8z"/></svg>3 j</div>
       <div class="credits"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 10h4M17 10h4M3 14h4M17 14h4"/></svg>9</div>
       <div class="streak" onclick="go('reglages')" style="cursor:pointer;padding:6px" aria-label="Réglages"><svg viewBox="0 0 24 24" style="margin:0"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-      <div class="avwrap" onclick="toggleAccts()"><div class="av" id="accAv" style="background-image:url('https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=120&q=70')"></div><span class="avcaret"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></div>
+      <div class="avwrap"><div class="av" id="accAv" onclick="go('compte')" style="background-image:url('https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=120&q=70')"></div><span class="avcaret" onclick="event.stopPropagation();toggleAccts()"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></div>
     </div>
     <div class="scroll">
       <div class="hello">Salut Julien 👋</div>
@@ -613,8 +649,6 @@
         <div class="cc-b"><span class="clab">Ton coach personnel</span><p id="coachMsg">Suis ton idée du jour — je t'accompagne pas à pas.</p><span class="coachlink" onclick="event.stopPropagation();go('coachchat')">💬 Parler à mon coach →</span></div>
       </div>
 
-      <div class="sec-h">Ta progression</div>
-      <div class="prog" id="planStats"></div>
       </div><!-- /dashFull -->
     </div>
   </section>
@@ -832,20 +866,17 @@
   <section class="screen" id="plan">
     <div class="top"><div class="logo"><img src="creatikk_assets/icon.svg" alt=""><span>Creati<span class="cy">kk</span></span></div><div class="credits"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14"/></svg>9</div></div>
     <div class="scroll">
-      <div class="planhero">
-        <b>30 jours pour lancer ta chaîne</b>
-        <p>1 vidéo par jour — coche chaque jour fait : ton coach et tes objectifs s'adaptent en direct.</p>
-        <div class="phproj">🚀 Le mois 1 pose ta <b>base</b>. Les créateurs qui tiennent <b>3 à 6 mois</b> font décoller leur audience pour de vrai — c'est là que tout bascule. <span class="statslink" onclick="go('profil')" style="cursor:pointer;text-decoration:underline">tes revenus → onglet Coach</span></div>
-        <div class="gbar"><i id="planBar" style="width:0%"></i></div>
-        <small id="planProg">0 / 30 jours faits</small>
-      </div>
-      <div class="coach">
-        <div class="cav"><img src="creatikk_assets/icon.svg" alt=""></div>
-        <div class="cbody"><span class="clab">Ton coach suit ta progression</span><p id="planCoachMsg">Ton plan démarre aujourd'hui. Coche ta 1re vidéo et lance la machine — un jour à la fois 🔥</p></div>
-      </div>
+      <h1 style="margin-bottom:4px">Ton planning</h1>
+      <p class="sub" style="margin-bottom:13px">Tu postes déjà — voici 30 jours de <b style="color:#fff">nouveaux concepts et d'idées qui cartonnent</b> pour ta niche, un par jour. Coche chaque jour fait, ton coach s'adapte.</p>
+      <div style="margin-bottom:16px"><div class="gbar"><i id="planBar" style="width:0%"></i></div><small id="planProg" style="display:block;margin-top:6px">0 / 30 jours faits</small></div>
       <div class="sec-h" id="calMonth">Ton calendrier</div>
       <div class="cal" id="calGrid"></div>
       <div class="cdetail" id="calDetail"></div>
+      <div class="coach" style="margin-top:18px">
+        <div class="cav"><img src="creatikk_assets/icon.svg" alt=""></div>
+        <div class="cbody"><span class="clab">Ton coach suit ta progression</span><p id="planCoachMsg">Ton plan démarre aujourd'hui. Coche ta 1re vidéo et lance la machine — un jour à la fois 🔥</p></div>
+      </div>
+      <div class="phproj" style="margin-top:14px">🚀 De nouveaux angles chaque mois pour <b>ne jamais tourner en rond</b>. Les créateurs qui tiennent <b>3 à 6 mois</b> font vraiment décoller leur audience — c'est là que tout bascule. <span class="statslink" onclick="go('profil')" style="cursor:pointer;text-decoration:underline">tes revenus → onglet Stratégie</span></div>
       <div id="planDone30" style="display:none;margin-top:14px;background:linear-gradient(120deg,rgba(35,201,167,.14),rgba(148,14,251,.14));border:1px solid rgba(35,201,167,.3);border-radius:16px;padding:16px">
         <div style="font-size:16px;font-weight:800;margin-bottom:6px">🎉 Mois 1 terminé — bravo !</div>
         <p style="font-size:13.5px;color:#cdd0dc;line-height:1.5;margin:0 0 12px">Tu as tenu 30 jours. Tu as maintenant une vraie base et des formats qui marchent. Le mois 2 vise plus haut : capitaliser sur tes meilleures vidéos et enclencher la monétisation.</p>
@@ -995,16 +1026,6 @@
 
       <div class="money2" id="moneyCard" style="margin-top:4px"></div>
 
-      <div class="sec-h">Tes paliers</div>
-      <div class="badges-intro">Progresse pour débloquer des crédits gratuits et des avantages.</div>
-      <div class="badges">
-        <div class="badge on"><div class="bc">🔥</div><small>Série 3j</small><small class="bw">Débloqué</small></div>
-        <div class="badge on"><div class="bc">🎬</div><small>5 vidéos</small><small class="bw">Débloqué</small></div>
-        <div class="badge lock"><div class="bc">🏅</div><small>Série 7j</small><small class="bw">+10 crédits</small></div>
-        <div class="badge lock"><div class="bc">🏆</div><small>Régulier</small><small class="bw">Modèle premium</small></div>
-        <div class="badge lock"><div class="bc">💰</div><small>1re vente</small><small class="bw">+20 crédits</small></div>
-      </div>
-
       <div class="sec-h">Tes conseils du moment</div>
       <div id="coachTips">
         <div class="tip"><span class="te">⏰</span><div><b>Publie le soir</b><p>Tu postes vers 14h. Teste 19h–21h : ton audience est là le soir.</p></div></div>
@@ -1029,6 +1050,14 @@
       <div class="sec-h" style="margin-top:22px">Ton profil</div>
       <div class="card" onclick="go('reglages')"><span class="ic" style="background:linear-gradient(135deg,#5f6470,#2b2f38)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span><div class="cb"><b>Réglages & abonnement</b><small>Te montrer ou non · gérer ton abo · ton compte</small></div><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div>
       <button class="freelink" onclick="startTour()" style="margin-top:14px">🧭 Revoir le guide de Creatikk</button>
+    </div>
+  </section>
+
+  <!-- PROFIL DE COMPTE (bilan) -->
+  <section class="screen" id="compte">
+    <div class="ftop"><div class="back" onclick="go('accueil')"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></div><div class="ft-title">Profil de compte</div></div>
+    <div class="scroll">
+      <div id="compteBody"></div>
     </div>
   </section>
 
@@ -1118,10 +1147,21 @@
   <!-- NICHE PICKER -->
   <div class="sheet" id="nicheSheet" onclick="if(event.target===this)closeNicheSheet()">
     <div class="sheetc">
-      <div class="sheeth">Ta niche, avec tes mots</div>
-      <p class="note" style="margin:0 0 11px;line-height:1.5">Explique ce que tu veux faire — l'IA en fait ta niche et <b style="color:#cfd2e0">tout ton Creatikk s'adapte</b> (idées, plan, conseils, revenus).</p>
-      <textarea id="nicheDesc" class="ta" style="min-height:78px;margin-bottom:10px" placeholder="Ex : j'aide les jeunes à prendre du muscle sans salle de sport, à petit budget…"></textarea>
-      <button class="btn" id="nicheDefineBtn" onclick="defineNiche()"><svg viewBox="0 0 24 24"><path d="M12 3l1.7 4.8L18.5 9.5l-4.8 1.7L12 16l-1.7-4.8L5.5 9.5l4.8-1.7z"/></svg>Définir ma niche</button>
+      <div class="sheeth">Ta niche & ton objectif, avec tes mots</div>
+      <p class="note" style="margin:0 0 11px;line-height:1.5">Dis ce que tu fais <b style="color:#cfd2e0">et ce que tu veux atteindre</b> — l'IA en fait ta niche + ton objectif, et <b style="color:#cfd2e0">tout ton Creatikk se coordonne dessus</b> (idées, plan, conseils, monétisation).</p>
+      <label class="lbl" style="display:block;font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px">Ce que tu fais</label>
+      <textarea id="nicheDesc" class="ta" style="min-height:66px;margin-bottom:12px" placeholder="Ex : je suis personal shopper, je chine des vêtements en brocante pour mes clientes…"></textarea>
+      <label class="lbl" style="display:block;font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:8px">Tes objectifs <span style="text-transform:none;letter-spacing:0;font-weight:600;color:#8a90a4">— plusieurs possibles</span></label>
+      <div id="objChips" class="objchips">
+        <span class="objchip" data-o="vendre un produit ou service précis" onclick="tglObjChip(this)">💰 Vendre un produit / service</span>
+        <span class="objchip" data-o="monétiser mon audience (partenariats, affiliation, marques)" onclick="tglObjChip(this)">📈 Monétiser mon audience</span>
+        <span class="objchip" data-o="trouver des clients" onclick="tglObjChip(this)">🧲 Trouver des clients</span>
+        <span class="objchip" data-o="faire grandir mon audience" onclick="tglObjChip(this)">🚀 Grandir mon audience</span>
+        <span class="objchip" data-o="me faire connaître / devenir une référence dans ma niche" onclick="tglObjChip(this)">👑 Me faire connaître</span>
+      </div>
+      <label class="lbl" style="display:block;font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px">Précise (ce que tu vends, ton objectif long terme…)</label>
+      <textarea id="nicheObj" class="ta" style="min-height:56px;margin-bottom:10px" placeholder="Ex : je vends un service de personal shopping, et à long terme j'aimerais lancer ma marque de seconde main…"></textarea>
+      <button class="btn" id="nicheDefineBtn" onclick="defineNiche()"><svg viewBox="0 0 24 24"><path d="M12 3l1.7 4.8L18.5 9.5l-4.8 1.7L12 16l-1.7-4.8L5.5 9.5l4.8-1.7z"/></svg>Coordonner mon Creatikk</button>
       <div id="nicheDefineStatus"></div>
       <div class="sheeth" style="font-size:13px;margin-top:20px">Ou pars d'une niche existante</div>
       <div id="nicheSheetList"></div>
@@ -1135,7 +1175,7 @@
     <a id="nav-plan" onclick="go('plan')"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Planning</a>
     <div class="plus" onclick="openCreate()"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
     <a id="nav-outils" onclick="go('outils')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5"/></svg>Outils</a>
-    <a id="nav-profil" onclick="go('profil')"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Profil</a>
+    <a id="nav-profil" onclick="go('profil')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>Stratégie</a>
   </div>
 
   <div id="confetti"></div>
@@ -1165,13 +1205,14 @@
     if(id==='accueil') renderWelcomeBanner();
     if(id==='reglages') renderShowPick();
     if(id==='profil'){ renderAccountUI(); loadCoachTips(); loadRevenue(); }
+    if(id==='compte') renderCompte();
     if(id==='plan') loadContentPlan();
     if(id==='creer_style') renderDuree();
     if(id==='creer_loading'){ genScript(); setTimeout(()=>go('creer_script'),1100); }
     if(id==='studio_loading') setTimeout(()=>go('result'),2600);
     /* analyse_loading est piloté par analyzeVideo() (vraie IA) */
   }
-  const _F=['lesson','messtats','coachchat','nichefinder','nicheresult','reglages']; _F.forEach(x=>{ if(!FLOW.includes(x)) FLOW.push(x); });
+  const _F=['lesson','messtats','coachchat','nichefinder','nicheresult','reglages','compte']; _F.forEach(x=>{ if(!FLOW.includes(x)) FLOW.push(x); });
   function toggleAccts(){ document.getElementById('acctSheet').classList.toggle('show'); }
   function toggleCredits(){ document.getElementById('creditSheet').classList.toggle('show'); }
   function buyCredits(n){ var b=document.getElementById('credBal'); if(b){ b.textContent=(parseInt(b.textContent,10)||0)+parseInt(n,10); } toggleCredits(); try{ confetti(); }catch(e){} }
@@ -1200,9 +1241,11 @@
   var SHOW_MAP={"Oui, à l'aise":'oui',"Un peu":'un-peu',"Non — faceless":'non-faceless'};
   var userShow='unsure'; // se montrer : camera / faceless / un-peu / unsure (vient du tunnel, modifiable)
   function buildProfile(){
-    var p={ avatar: curAvatar };
+    // Plus de persona « débutant/pro » : la NICHE + l'OBJECTIF (+ le compte connecté en prod) pilotent tout.
+    var p={};
     if(curNicheKey && NICHES[curNicheKey]) p.niche={ cle:curNicheKey, nom:NICHES[curNicheKey].name, audience:NICHES[curNicheKey].audience };
     if(userShow && userShow!=='unsure') p.seMontrer=userShow;
+    if(curObjectif) p.objectif=curObjectif; // objectif perso → l'IA cale idées/conseils/monétisation dessus
     // En prod, les chiffres (abonnés, vues…) viendront du compte connecté.
     return p;
   }
@@ -1273,17 +1316,17 @@
       dailyIdeaCache[key]=aiIdea;
       seenIdeas[key]=(seenIdeas[key]||[]).concat(idea.hook).slice(-8); // mémorise pour éviter les répétitions
       var tc=document.getElementById('todayCard'); if(tc) tc.innerHTML=ideaCardHTML(aiIdea.badge, aiIdea.hook, aiIdea.why);
-    }catch(e){ var di=IDEAS[curAvatar]||IDEAS.jeune; aiIdea=null; var tx=document.getElementById('todayCard'); if(tx) tx.innerHTML=ideaCardHTML('🔥 Ton idée du jour', di.hook, di.why); }
+    }catch(e){ var di=currentIdea(); aiIdea=null; var tx=document.getElementById('todayCard'); if(tx) tx.innerHTML=ideaCardHTML('🔥 Ton idée du jour', di.hook, di.why); }
     delete ideaLoading[key];
   }
   function refreshIdea(){ delete dailyIdeaCache[profileKey()]; aiIdea=null; loadDailyIdea(true); }
 
   // ── Persistance : la niche & le compte sont retenus, même après reload ──
   var lastHandoffTs=0, pendingHandoff=null;
-  function saveState(){ try{ localStorage.setItem('ck_state', JSON.stringify({ avatar:curAvatar, nicheKey:curNicheKey, niche:(curNicheKey&&NICHES[curNicheKey])?NICHES[curNicheKey]:null, account:connectedAccount, handoffTs:lastHandoffTs, niveau:handoffNiveau })); }catch(e){} }
+  function saveState(){ try{ localStorage.setItem('ck_state', JSON.stringify({ avatar:curAvatar, nicheKey:curNicheKey, niche:(curNicheKey&&NICHES[curNicheKey])?NICHES[curNicheKey]:null, objectif:curObjectif, objectifSel:curObjectifSel, objectifText:curObjectifText, account:connectedAccount, handoffTs:lastHandoffTs, niveau:handoffNiveau })); }catch(e){} }
   function loadState(){
     var s=null; try{ s=JSON.parse(localStorage.getItem('ck_state')||'null'); }catch(e){}
-    if(s){ if(s.nicheKey && s.niche){ NICHES[s.nicheKey]=s.niche; curNicheKey=s.nicheKey; } if(s.avatar) curAvatar=s.avatar; if(typeof s.account!=='undefined') connectedAccount=s.account; if(s.handoffTs) lastHandoffTs=s.handoffTs; if(s.niveau) handoffNiveau=s.niveau; }
+    if(s){ if(s.nicheKey && s.niche){ NICHES[s.nicheKey]=s.niche; curNicheKey=s.nicheKey; } if(s.avatar) curAvatar=s.avatar; if(s.objectif) curObjectif=s.objectif; if(s.objectifSel) curObjectifSel=s.objectifSel; if(s.objectifText) curObjectifText=s.objectifText; if(typeof s.account!=='undefined') connectedAccount=s.account; if(s.handoffTs) lastHandoffTs=s.handoffTs; if(s.niveau) handoffNiveau=s.niveau; }
     try{ var h=JSON.parse(localStorage.getItem('ck_handoff')||'null'); if(h && h.ts && h.ts!==lastHandoffTs) applyHandoff(h); }catch(e){}
   }
   // Reçoit le compte + la niche + l'analyse depuis le tunnel.
@@ -1291,6 +1334,7 @@
     pendingHandoff=h; lastHandoffTs=h.ts;
     handoffNiveau = h.niveau || null;
     if(h.seMontrer) userShow=h.seMontrer; // se montrer / faceless, propagé du tunnel
+    if(h.objectif) curObjectif=h.objectif; else if(h.objectifs && h.objectifs.length) curObjectif=[].concat(h.objectifs).join(', '); // objectif propagé du tunnel
     coachMode = (h.niveau==='pro') ? 'direct' : 'guide';
     if(h.connected && h.account){
       connectedAccount={ fromHandoff:true, pseudo:h.account.pseudo, plateforme:h.account.plateforme, avatar:h.account.avatar||AV_M, abonnes:h.account.abonnes||'—', vues:h.account.vues||null, reg:'3/sem', niveau:(h.niveau==='pro'?'Confirmé':'Débutant'), note:(h.analysis&&h.analysis.resume)||"Compte connecté depuis ton onboarding." };
@@ -1335,14 +1379,17 @@
       }
     }
     var nh=document.getElementById('nicheHub');
-    if(nh){ nh.innerHTML='<div class="nichehub'+(curNicheKey?'':' empty')+'"><div style="min-width:0"><span class="nh-lab">🎯 Ta niche</span><b>'+(curNicheKey?esc(NICHES[curNicheKey].name):'Pas encore définie')+'</b></div><button class="nh-btn" onclick="openNicheSheet()">'+(curNicheKey?'Changer':'Choisir')+'</button></div>'; }
+    if(nh){ nh.innerHTML='<div class="nichehub'+(curNicheKey?'':' empty')+'"><div style="min-width:0"><span class="nh-lab">🎯 Ta niche</span><b>'+(curNicheKey?esc(NICHES[curNicheKey].name):'Pas encore définie')+'</b>'+(curObjectif?('<span style="display:block;font-size:11.5px;color:#9aa0b4;margin-top:2px">🎯 Objectif : '+esc(curObjectif)+'</span>'):'')+'</div><button class="nh-btn" onclick="openNicheSheet()">'+(curNicheKey?'Changer':'Choisir')+'</button></div>'; }
   }
   function connectAccount(plat){ connectedAccount=accountFromPreset(curAvatar); connectedAccount.plateforme=plat; cameWithoutAccount=false; if(!curNicheKey){ curNicheKey='Sport / Fitness'; applyNiche(); } saveState(); renderAccountUI(); renderToday(); renderWelcomeBanner(); confetti(); }
   function disconnectAccount(){ connectedAccount=null; saveState(); renderAccountUI(); renderAccountToday(); }
 
   // ── Sélecteur de niche manuel (et le reste suit) ──
   function renderNicheSheet(){ var l=document.getElementById('nicheSheetList'); if(!l) return; l.innerHTML=Object.keys(NICHES).map(function(k){ var n=NICHES[k]; var on=(k===curNicheKey); return '<div class="acct'+(on?' on':'')+'" onclick="pickNiche(\''+k.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')"><div style="min-width:0"><b>'+esc(n.name)+'</b><small>'+esc(k)+'</small></div><span class="chk">✓</span></div>'; }).join(''); }
-  function openNicheSheet(){ renderNicheSheet(); var s=document.getElementById('nicheSheet'); if(s) s.classList.add('show'); }
+  function openNicheSheet(){ renderNicheSheet();
+    var oa=document.getElementById('nicheObj'); if(oa) oa.value=curObjectifText||'';
+    document.querySelectorAll('#objChips .objchip').forEach(function(c){ c.classList.toggle('sel', curObjectifSel.indexOf(c.getAttribute('data-o'))>-1); });
+    var s=document.getElementById('nicheSheet'); if(s) s.classList.add('show'); }
   function closeNicheSheet(){ var s=document.getElementById('nicheSheet'); if(s) s.classList.remove('show'); }
 
   // ── Identité du compte par profil démo : le compte pilote TOUT l'écran ──
@@ -1371,6 +1418,91 @@
     if(ss){ ss.innerHTML = a
       ? '<span style="color:#2fe0c2;font-size:12.5px;font-weight:700">🔄 Chiffres synchronisés depuis @'+esc(a.pseudo)+'</span>'
       : '<button class="btn" style="margin:2px 0 8px" onclick="connectAccount(\'TikTok\')"><svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:#fff"><path d="M16.5 3c.2 1.9 1.5 3.4 3.5 3.6v2.4c-1.4 0-2.7-.4-3.9-1.2v5.9a5.4 5.4 0 11-5.4-5.4c.3 0 .6 0 .9.1v2.5a3 3 0 102.1 2.9V3h2.8z"/></svg>Connecter mon compte pour un suivi réel</button><div style="font-size:12px;color:#9aa0b4"><span class="statslink" onclick="go(\'messtats\')" style="cursor:pointer;text-decoration:underline">ou saisir mes chiffres à la main</span></div>'; }
+  }
+  // ── Profil de compte (bilan) : diagnostic forts/faibles par profil démo ──
+  // En prod : ces forts/faibles viennent de l'IA (/analyze-account + /coach-tips) sur le vrai compte.
+  const DIAG={
+    jeune:{eng:'9,2%',besth:'19 h–21 h',tendance:'+18%',format:'« secret révélé »',
+      pos:"Un compte qui monte : ta régularité installe la confiance de l'algo. Il te manque une série qui fidélise pour transformer les vues en abonnés.",
+      forts:["Tu publies régulièrement — l'algo te pousse en ce moment","Ton format « secret révélé » fait 2× ta moyenne de vues","Bonne accroche : tes 3 premières secondes retiennent"],
+      faibles:["Tu postes vers 14 h — ton audience est surtout là le soir","Peu d'appels à commenter → l'engagement plafonne","Pas encore de rendez-vous hebdo qui fidélise"],
+      action:"Passe ton format gagnant en série hebdo et poste entre 19 h et 21 h."},
+    novice:{eng:'7,5%',besth:'18 h–20 h',tendance:'+9%',format:'tuto simple',
+      pos:"Tu démarres — et c'est déjà bien parti. La priorité absolue : publier plus régulièrement, tout le reste suivra.",
+      forts:["Tu t'es lancé — le plus dur est fait","Tes tutos simples parlent à un vrai public débutant","Ton compte est clair : on comprend ta thématique"],
+      faibles:["2 vidéos/sem, c'est trop peu pour que l'algo t'installe","Accroches encore molles → beaucoup scrollent avant 3 s","Tu changes trop de sujet : difficile de te suivre"],
+      action:"Vise 4 vidéos/sem sur UN seul sujet pendant 2 semaines."},
+    business:{eng:'6,1%',besth:'12 h–13 h',tendance:'+14%',format:'avant / après',
+      pos:"Tes vidéos amènent du trafic vers ton profil. Le levier n°1 maintenant : convertir ces visites en ventes.",
+      forts:["Tes vues génèrent des clics profil réguliers","Format « avant/après » très performant pour ton offre","Image de marque nette et pro"],
+      faibles:["Appels à l'action trop faibles → clics perdus","Peu de preuve sociale (avis, résultats clients)","Bio & lien pas optimisés pour vendre"],
+      action:"Ajoute un CTA clair en fin de vidéo + un lien qui vend en bio."},
+    etabli:{eng:'5,4%',besth:'19 h–22 h',tendance:'+7%',format:'storytime',
+      pos:"Belle audience installée. L'enjeu passe de « faire des vues » à « diversifier tes revenus » sans y passer plus de temps.",
+      forts:["Grosse base d'abonnés fidèles","Tu tiens un rythme pro (5/sem) sans t'épuiser","Plusieurs formats gagnants identifiés"],
+      faibles:["Tes revenus dépendent trop d'une seule source","Peu de contenu qui capitalise (playlists, séries)","Tu ne réexploites pas assez tes vidéos qui ont cartonné"],
+      action:"Ouvre une 2e source de revenus (offre ou partenariats) ce mois-ci."},
+    interm:{eng:'6,8%',besth:'19 h–21 h',tendance:'-3%',format:'listicle',
+      pos:"Tu as l'audience pour passer un cap — mais tu plafonnes. Un frein précis te retient, on le lève et ça repart.",
+      forts:["Audience suffisante pour commencer à monétiser","Tu connais tes formats qui marchent","Communauté engagée dans les commentaires"],
+      faibles:["Tes vues stagnent depuis quelques semaines","Trop de formats différents → l'algo hésite","Tu ne testes pas de nouvelles accroches"],
+      action:"Concentre-toi 2 semaines sur ton meilleur format et teste 3 accroches."},
+    bloque:{eng:'3,2%',besth:'18 h–20 h',tendance:'-12%',format:'à trouver',
+      pos:"Tes vues sont basses, mais c'est très courant et ça se corrige vite. On attaque ton frein principal dès aujourd'hui.",
+      forts:["Tu es toujours là — la motivation est le vrai carburant","Ton compte a une base, on ne part pas de zéro","Quelques vidéos sortent du lot : la matière est là"],
+      faibles:["1 vidéo/sem : l'algo ne peut pas t'installer","Tes 3 premières secondes ne retiennent pas","Sujets trop larges → aucune audience précise ne s'attache"],
+      action:"Choisis 1 sujet précis et publie 3 vidéos cette semaine, point."},
+    agence:{eng:'5,0%',besth:'variable',tendance:'+11%',format:'UGC clients',
+      pos:"Tu gères plusieurs comptes clients. L'enjeu : industrialiser la production sans jamais sacrifier la qualité.",
+      forts:["Machine de production bien rodée (6/sem)","Tu gères plusieurs niches en parallèle","Un volume qui génère des résultats clients"],
+      faibles:["Qualité inégale d'un compte à l'autre","Peu de process réutilisable entre clients","Reporting client chronophage"],
+      action:"Standardise un modèle de script réutilisable sur tous tes comptes."},
+    expert:{eng:'8,1%',besth:'12 h–14 h',tendance:'+6%',format:'décryptage',
+      pos:"Ton contenu fait autorité dans ta niche. Il y a des clients dans tes DM — l'enjeu est de les convertir en rendez-vous.",
+      forts:["Fort taux d'engagement : ton audience t'écoute","Positionnement d'expert clair et crédible","Tes décryptages génèrent des DM qualifiés"],
+      faibles:["Tu ne transformes pas assez tes DM en rendez-vous","Rythme faible (2/sem) vu ton potentiel","Pas d'offre visible pour capter la demande"],
+      action:"Mets une offre claire en bio et propose un appel en fin de vidéo."},
+    faceless:{eng:'5,8%',besth:'20 h–22 h',tendance:'+13%',format:'compilation',
+      pos:"Ton format faceless fonctionne sans jamais te montrer. Parfait pour scaler avec le Studio et multiplier les comptes.",
+      forts:["Ton format marche sans avoir à te filmer","Production facile à déléguer/automatiser","Rythme régulier (4/sem)"],
+      faibles:["Peu d'attachement personnel → fidélité plus fragile","Voix off / montage parfois répétitifs","Peu de variation d'accroches"],
+      action:"Varie tes accroches et enchaîne 2 comptes faceless via le Studio."}
+  };
+  function renderCompte(){
+    var el=document.getElementById('compteBody'); if(!el) return;
+    var a=connectedAccount;
+    var preset=(a&&a.preset)||curAvatar||'jeune';
+    var base=ACCT[preset]||ACCT.jeune;
+    var d=DIAG[preset]||DIAG.jeune;
+    var pseudo=(a&&a.pseudo)||base.pseudo, plat=(a&&a.plateforme)||base.plateforme, av=(a&&a.avatar)||base.avatar;
+    var abn=(a&&a.abonnes)||base.abonnes, vues=(a&&a.vues)||base.vues, reg=(a&&a.reg)||base.reg, niv=(a&&a.niveau)||base.niveau;
+    var niche=curNicheKey?NICHES[curNicheKey].name:'À définir';
+    var forts=d.forts.map(function(t){return '<div class="pfrow"><span class="pfi ok">✓</span><p>'+esc(t)+'</p></div>';}).join('');
+    var faibles=d.faibles.map(function(t){return '<div class="pfrow"><span class="pfi warn">!</span><p>'+esc(t)+'</p></div>';}).join('');
+    var tneg=String(d.tendance).charAt(0)==='-';
+    var sync=a
+      ? '<div class="pfsync" style="color:#2fe0c2">🔄 Synchronisé depuis @'+esc(pseudo)+' · mis à jour aujourd\'hui</div>'
+      : '<div class="pfsync" style="color:#9aa0b4">Aperçu de démo — <span style="color:#3a9bff;text-decoration:underline;cursor:pointer" onclick="connectAccount(\'TikTok\')">connecte ton compte</span> pour tes vraies stats.</div>';
+    el.innerHTML=
+      '<div class="pfhero"><span class="pfbadge">'+esc(niv)+'</span>'
+      +'<div class="pfav" style="background-image:url(\''+av+'\')"></div>'
+      +'<div class="pfid"><div class="pfname">@'+esc(pseudo)+' <span class="pfplat">'+esc(plat)+'</span></div><div class="pfniche">🎯 '+esc(niche)+'</div></div></div>'
+      +'<div class="pfstats"><div><b>'+esc(abn)+'</b><small>Abonnés</small></div><div><b>'+esc(vues)+'</b><small>Vues / vidéo</small></div><div><b>'+esc(d.eng)+'</b><small>Engagement</small></div></div>'
+      +sync
+      +'<button class="btn light" style="margin-bottom:16px" onclick="toggleAccts()"><svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Changer de compte</button>'
+      +'<div class="pfpos"><span>Ton positionnement</span><p>'+esc(d.pos)+'</p></div>'
+      +'<div class="sec-h">Ce qui se passe sur ton compte</div>'
+      +'<div class="pfgrid">'
+        +'<div class="pfcell"><span class="pfk">Régularité</span><b>'+esc(reg)+'</b></div>'
+        +'<div class="pfcell"><span class="pfk">Meilleur format</span><b>'+esc(d.format)+'</b></div>'
+        +'<div class="pfcell"><span class="pfk">Meilleur créneau</span><b>'+esc(d.besth)+'</b></div>'
+        +'<div class="pfcell"><span class="pfk">Tendance 30 j</span><b class="'+(tneg?'':'up')+'"'+(tneg?' style="color:#ff7a7a"':'')+'>'+esc(d.tendance)+'</b></div>'
+      +'</div>'
+      +'<div class="sec-h" style="margin-top:20px">Tes points forts</div>'
+      +'<div class="pflist">'+forts+'</div>'
+      +'<div class="sec-h" style="margin-top:20px">À travailler</div>'
+      +'<div class="pflist">'+faibles+'</div>'
+      +'<div class="pfaction"><div><b>Action prioritaire</b><p>'+esc(d.action)+'</p></div><button class="btn" onclick="go(\'coachchat\')">En parler</button></div>';
   }
   // Bannière « ton onboarding t'a déjà configuré » (depuis le handoff du tunnel).
   function renderWelcome(){
@@ -1578,7 +1710,8 @@
     expert:{hook:"« L'erreur que tout le monde fait dans ton domaine »",why:"un vrai aimant à DM : tu montres ton expertise, les prospects viennent."},
     faceless:{hook:"« 3 vérités sur ta niche » — texte + B-roll + voix off",why:"format faceless qui cartonne, zéro visage, 100% généré par le Studio."}
   };
-  var curAvatar='jeune', curNicheKey=null;
+  var curAvatar='jeune', curNicheKey=null, curObjectif='', curObjectifSel=[], curObjectifText='';
+  function tglObjChip(el){ el.classList.toggle('sel'); }
   const COACH={
     jeune:"Ta dernière vidéo a fait 2× ta moyenne 🔥 On reproduit ce qui marche aujourd'hui.",
     novice:"Déjà 5 vidéos publiées — tu prends le rythme. Continue, c'est comme ça qu'on apprend.",
@@ -1620,23 +1753,20 @@
       stats:[["8,3k","Vues moy."],["12","Vidéos"],["73","Score viral"]]}
   };
   var aiIdea=null;
+  // Idée de repli TOUJOURS collée à la niche (jamais un sujet fitness par défaut).
+  function neutralIdea(){
+    if(curNicheKey && NICHES[curNicheKey]){ var nm=NICHES[curNicheKey].name; return {hook:'« Le truc que personne ne t\'explique en '+nm+' »', why:'un angle coulisses/secret qui accroche, adapté à ta niche « '+nm+' ».'}; }
+    return {hook:'« Le truc que personne ne t\'explique dans ta niche »', why:'un angle coulisses/secret qui accroche — à adapter à ton sujet.'};
+  }
   function currentIdea(){
     if(aiIdea) return aiIdea;
-    // niche du tunnel : on n'utilise ses idées QUE si elles existent (sinon "undefined" à l'écran)
+    // niche : on n'utilise ses idées QUE si elles existent
     if(curNicheKey && NICHES[curNicheKey] && NICHES[curNicheKey].ideas && NICHES[curNicheKey].ideas[0]){ var n=NICHES[curNicheKey]; return {hook:n.ideas[0], why:"format qui cartonne en « "+n.name+" » — démarre avec ça."}; }
-    return IDEAS[curAvatar]||IDEAS.jeune;
+    return neutralIdea();
   }
   // Mode DIRECT (pro/expert) → accès rapide aux outils en haut. Mode GUIDE (débutant) → rien (coach en avant).
   function renderQuickTools(){
-    var q=document.getElementById('quickTools'); if(!q) return;
-    q.innerHTML = (coachMode==='direct')
-      ? '<div class="qt-lab">Créer maintenant</div><div class="qt-grid">'
-        +'<div class="qt" onclick="startVideo()"><span>🎬</span><b>Vidéo guidée</b></div>'
-        +'<div class="qt" onclick="go(\'creer_paste\')"><span>✍️</span><b>Mon script</b></div>'
-        +'<div class="qt" onclick="go(\'studio\')"><span>🎛️</span><b>Studio</b></div>'
-        +'<div class="qt" onclick="go(\'analyse\')"><span>📊</span><b>Analyse</b></div>'
-        +'</div>'
-      : '';
+    var q=document.getElementById('quickTools'); if(q) q.innerHTML=''; // raccourcis « côté pro » retirés — plus de distinction débutant/pro
   }
   function renderToday(){
     var tc=document.getElementById('todayCard');
@@ -1748,20 +1878,28 @@
   function selVal(id,def){ var e=document.querySelector('#'+id+' .chip.sel'); return e?e.textContent.trim():def; }
   function pickNiche(key){ curNicheKey=key; delete dailyIdeaCache[profileKey()]; applyNiche(); saveState(); closeNicheSheet(); confetti(); go('accueil'); }
   // L'utilisateur DÉCRIT sa niche avec ses mots → l'IA la façonne → tout le compte s'adapte.
+  // Vide les caches IA pour que idées/conseils/plan/revenus se régénèrent avec la nouvelle niche+objectif.
+  function resetAiCaches(){ aiIdea=null; dailyIdeaCache={}; seenIdeas={}; coachTipsCache={}; revenueCache={}; planCache={}; if(typeof planReady!=='undefined') planReady=false; }
   async function defineNiche(){
     var ta=document.getElementById('nicheDesc'); var desc=((ta&&ta.value)||'').trim();
+    var oa=document.getElementById('nicheObj'); var freetext=((oa&&oa.value)||'').trim();
+    var chips=[].slice.call(document.querySelectorAll('#objChips .objchip.sel')).map(function(c){return c.getAttribute('data-o');});
     var st=document.getElementById('nicheDefineStatus'); var btn=document.getElementById('nicheDefineBtn');
-    if(!desc){ if(st) st.innerHTML='<p class="note" style="color:#ffb03c;margin-top:9px">Écris quelques mots sur ce que tu veux faire 🙂</p>'; return; }
+    if(!desc){ if(st) st.innerHTML='<p class="note" style="color:#ffb03c;margin-top:9px">Écris quelques mots sur ce que tu fais 🙂</p>'; return; }
+    // Objectif = les objectifs cochés + la précision libre → l'IA cale idées/conseils/monétisation sur TOUT ça, sur les mois qui suivent.
+    curObjectifSel=chips; curObjectifText=freetext;
+    var parts=chips.slice(); if(freetext) parts.push(freetext);
+    var obj=parts.join(' ; ');
+    curObjectif=obj; resetAiCaches();
     if(btn) btn.disabled=true;
-    if(st) st.innerHTML='<p class="note" style="margin-top:9px">✨ L\'IA façonne ta niche…</p>';
+    if(st) st.innerHTML='<p class="note" style="margin-top:9px">✨ L\'IA coordonne ta niche et ton objectif…</p>';
     if(!cerveauOn()){ NICHES['compte']={ name:desc.slice(0,46), why:desc, audience:'—', money:'—', compet:'—', concepts:[], ideas:[] }; if(btn) btn.disabled=false; pickNiche('compte'); return; }
     try{
-      var r=await cerveauCall('define-niche',{ description:desc, profil:buildProfile() });
+      var r=await cerveauCall('define-niche',{ description:desc, objectif:obj, profil:buildProfile() });
       var n=await r.json(); if(!n || !n.nom) throw new Error('vide');
       var key=n.cle||'compte';
       NICHES[key]={ name:n.nom, why:n.pourquoiToi, audience:n.audience, money:n.potentielMonetisation, compet:n.niveauConcurrence, concepts:n.concepts||[], ideas:n.premieresIdees||[] };
       if(btn) btn.disabled=false; if(st) st.innerHTML='';
-      if(ta) ta.value='';
       pickNiche(key);
     }catch(e){ if(btn) btn.disabled=false; if(st) st.innerHTML='<p class="note" style="color:#ffb03c;margin-top:9px">Réessaie dans un instant.</p>'; }
   }
@@ -1891,7 +2029,7 @@
     const d=(planSel===PLAN_TODAY)?{t:ci.hook,w:ci.why}:PLAN[planSel];
     if(!d) return; // garde-fou anti "undefined"
     const isDone=planDone.has(planSel);
-    document.getElementById('calDetail').innerHTML=head+'<b>'+d.t+'</b><p>Pourquoi : '+d.w+'</p><div class="cda"><button class="btn" onclick="startVideo()">Faire cette vidéo</button><button class="cmark'+(isDone?' done':'')+'" onclick="markDay()">'+(isDone?'✓ Fait':'Marquer fait')+'</button></div>';
+    document.getElementById('calDetail').innerHTML=head+'<b>'+d.t+'</b><p>Pourquoi : '+d.w+'</p><div class="cda"><button class="btn" onclick="startVideoPlan()">Faire cette vidéo</button><button class="cmark'+(isDone?' done':'')+'" onclick="markDay()">'+(isDone?'✓ Fait':'Marquer fait')+'</button></div>';
   }
   function regenPlan(){ planDone=new Set(); planSel=0; planStart=new Date(); planStart.setHours(0,0,0,0); loadContentPlan(true); renderCal(); var sc=document.querySelector('#plan .scroll'); if(sc) sc.scrollTop=0; }
   function selDay(i){ planSel=i; renderCal(); var d=document.getElementById('calDetail'); if(d&&d.scrollIntoView) d.scrollIntoView({behavior:'smooth',block:'center'}); }
@@ -1927,7 +2065,7 @@
     {sel:"#nav-plan",title:"3 · Ton planning",text:"Un plan de contenu sur 30 jours : quoi poster chaque jour, et pourquoi — avec une vraie progression.",place:"top"},
     {sel:".nav .plus",title:"4 · Créer quand tu veux",text:"Lance une vidéo à tout moment : depuis une idée, ton propre script, ou en important ta vidéo.",place:"top"},
     {sel:"#nav-outils",title:"5 · Tes outils",text:"Le Studio génère ta vidéo de A à Z, l'Analyse teste tes vidéos (avant OU après publication), et les Tendances t'inspirent.",place:"top"},
-    {sel:"#nav-profil",title:"6 · Ton coach & ta monétisation",text:"Ton diagnostic, tes conseils du moment, ta niche et ton potentiel de revenus — tout au même endroit.",place:"top"},
+    {sel:"#nav-profil",title:"6 · Ta stratégie",text:"Ton coach, tes conseils du moment, tes leçons et ton potentiel de revenus — tout ce qui te fait progresser, au même endroit.",place:"top"},
     {sel:".avwrap",title:"7 · Ton compte = ta niche",text:"Dans Creatikk, 1 compte = 1 niche : ton coach, tes idées, ton plan et tes revenus s'adaptent à CE compte. Tu peux en créer ou connecter plusieurs (une niche chacun) et basculer en 1 tap — touche ton avatar pour gérer tes comptes.",place:"bottom"},
     {sel:null,title:"Prêt à percer 🚀",text:"Tu as tout en main. Ton idée du jour t'attend — on y va ?",cta:"Commencer"}
   ];
@@ -1966,20 +2104,33 @@
   }
   window.addEventListener('load', function(){ try{ if(!localStorage.getItem('ck_tour2')) setTimeout(startTour,500); }catch(e){ setTimeout(startTour,500); } });
   function hookOptHTML(hooks){
-    return (hooks||[]).map(function(h,i){ return '<div class="opt" onclick="selOne(this,\'next_hook\')"><span class="num">'+(i+1)+'</span><div>« '+esc(h.texte)+' »<small class="formula">Formule : '+esc(h.formule)+'</small></div></div>'; }).join('');
+    return (hooks||[]).map(function(h,i){ var t=String(h.texte||'').replace(/"/g,'&quot;'); return '<div class="opt" data-hook="'+t+'" onclick="selHook(this)"><span class="num">'+(i+1)+'</span><div>« '+esc(h.texte)+' »<small class="formula">Formule : '+esc(h.formule)+'</small></div></div>'; }).join('');
   }
-  var hooksOnly=false;
-  function startVideo(){ var ci=(typeof currentIdea==='function')?currentIdea():null; var el=document.getElementById('choiceIdea'); if(el) el.innerHTML=(ci&&ci.hook)?('Pour : <b style="color:#fff">'+esc(ci.hook)+'</b>'):'Pour ton idée du jour.'; go('creer_choice'); }
+  function selHook(el){ chosenHook=el.getAttribute('data-hook')||''; selOne(el,'next_hook'); }
+  var hooksOnly=false, activeIdea=null;
+  // Point d'entrée du flux création : on FIXE l'idée active (idée du jour OU vidéo choisie dans le planning)
+  // pour que les accroches ET le script soient bien générés à partir d'ELLE.
+  function startVideo(idea){
+    var ci = idea || ((typeof currentIdea==='function')?currentIdea():null);
+    activeIdea = ci;
+    var el=document.getElementById('choiceIdea'); if(el) el.innerHTML=(ci&&ci.hook)?('Pour : <b style="color:#fff">'+esc(ci.hook)+'</b>'):'Pour ton idée du jour.';
+    go('creer_choice');
+  }
+  // Depuis le planning : on passe l'idée du jour sélectionné (pas l'idée du jour générique).
+  function startVideoPlan(){
+    var idea=(typeof PLAN!=='undefined' && typeof planSel!=='undefined' && planSel!=null && planSel!==PLAN_TODAY && PLAN[planSel]) ? { hook:PLAN[planSel].t, why:PLAN[planSel].w } : null;
+    startVideo(idea);
+  }
   function startFull(){ hooksOnly=false; startCreate(); }
   function startHooksOnly(){ hooksOnly=true; startCreate(); }
   function hooksDone(){ confetti(); var cm=document.getElementById('coachMsg'); if(cm) cm.innerHTML='Accroche prête ✅ Copie-la et filme — reviens quand tu veux pour le script et le reste.'; go('accueil'); }
   async function startCreate(){
-    var only=hooksOnly; hooksOnly=false;
+    var only=hooksOnly; hooksOnly=false; chosenHook='';
     var nb=document.getElementById('next_hook');
     if(nb){ nb.disabled=true; if(only){ nb.textContent='✓ J\'ai mon accroche'; nb.setAttribute('onclick','hooksDone()'); } else { nb.textContent='Continuer'; nb.setAttribute('onclick',"go('creer_style')"); } }
     go('creer_hook');
     var box=document.getElementById('hookOpts'); if(!box) return;
-    var idea=forcedIdea||currentIdea(); var wasForced=!!forcedIdea; forcedIdea=null;
+    var idea=forcedIdea||activeIdea||currentIdea(); var wasForced=!!(forcedIdea||activeIdea); forcedIdea=null; activeIdea=idea;
     var hs=document.getElementById('hookSub'); if(hs) hs.innerHTML='La 1re phrase = 80% du job. Voici 3 accroches '+(wasForced?'pour ta <b style="color:#fff">vidéo adaptée à ta niche</b>':'taillées pour <b style="color:#fff">ton idée du jour</b>')+'.';
     // Repli (sans IA) : on part de l'idée du jour elle-même.
     var fallback=[{texte:idea.hook.replace(/^[«»\s"]+|[«»\s"]+$/g,''),formule:"C'est ton idée du jour, prête à filmer."}];
@@ -2073,7 +2224,7 @@
   async function genScript(){
     var box=document.getElementById('scriptScroll'); if(!box) return;
     box.innerHTML=scriptLoadingHTML();
-    var idea=(typeof currentIdea==='function')?currentIdea():{}; scriptResult=null;
+    var idea=activeIdea||((typeof currentIdea==='function')?currentIdea():{}); scriptResult=null;
     if(!cerveauOn()){ scriptResult=fallbackScript(idea); box.innerHTML=scriptHTML(scriptResult); return; }
     try{
       var r=await cerveauCall('generate-script',{ profil:buildProfile(), idee:{hook:idea.hook,why:idea.why}, accroche:(chosenHook||idea.hook), style:chosenStyle, duree:scriptDuree });
@@ -2101,6 +2252,6 @@
   function openCreate(){ go('creer_start'); }
   function tgl(el){ el.classList.toggle('off'); }
 </script>
-<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 66 ✅</div>
+<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 72 ✅</div>
 </body>
 </html>
