@@ -1233,7 +1233,7 @@
        pour passer en IA RÉELLE. Vide = mode démo (la maquette tourne seule,
        avec les données d'exemple). Le dev n'a qu'à coller l'URL ici.
      ══════════════════════════════════════════════════════════════ */
-  const CERVEAU_URL   = (function(){try{var p=new URLSearchParams(location.search).get('api');if(p){localStorage.setItem('ck_api',p);return p.replace(/\/$/,'');}var s=localStorage.getItem('ck_api');return (s||'http://192.168.1.184:8787').replace(/\/$/,'');}catch(e){return 'http://192.168.1.184:8787';}})();   // serveur de démo (Mac). En prod : le backend.
+  const CERVEAU_URL   = (function(){try{var p=new URLSearchParams(location.search).get('api');if(p){localStorage.setItem('ck_api',p);return p.replace(/\/$/,'');}var s=localStorage.getItem('ck_api');return (s||'https://creatikk-cerveau.onrender.com').replace(/\/$/,'');}catch(e){return 'https://creatikk-cerveau.onrender.com';}})();   // serveur de démo (Mac). En prod : le backend.
   const CERVEAU_TOKEN = '';   // (option) token Supabase de l'utilisateur connecté
   var   chatHist = [];
   function cerveauOn(){ return !!CERVEAU_URL; }

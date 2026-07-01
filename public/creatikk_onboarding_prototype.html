@@ -1502,7 +1502,7 @@
   }
 
   // ── Analyse du compte connecté (vraie IA via le serveur de démo) ──
-  const AI_DEMO_URL = (function(){try{var p=new URLSearchParams(location.search).get('api');if(p){localStorage.setItem('ck_api',p);return p.replace(/\/$/,'');}var s=localStorage.getItem('ck_api');return (s||'http://192.168.1.184:8787').replace(/\/$/,'');}catch(e){return 'http://192.168.1.184:8787';}})(); // serveur de démo (Mac, même Wi-Fi). En prod : le backend.
+  const AI_DEMO_URL = (function(){try{var p=new URLSearchParams(location.search).get('api');if(p){localStorage.setItem('ck_api',p);return p.replace(/\/$/,'');}var s=localStorage.getItem('ck_api');return (s||'https://creatikk-cerveau.onrender.com').replace(/\/$/,'');}catch(e){return 'https://creatikk-cerveau.onrender.com';}})(); // serveur de démo (Mac, même Wi-Fi). En prod : le backend.
   function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
   function sampleAccount(niche){
     var plat = (A.platform && /insta/i.test(A.platform)) ? 'Instagram' : 'TikTok';

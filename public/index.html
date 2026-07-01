@@ -53,17 +53,16 @@
   </div>
 
 <script>
-  // Propage le paramètre ?api= (URL du cerveau) vers les deux maquettes.
+  // Cerveau par défaut = le service Render. On accepte ?api= pour surcharger (test local, etc.).
   (function(){
+    var DEFAULT_API = 'https://creatikk-cerveau.onrender.com';
     var api = new URLSearchParams(location.search).get('api');
-    if(api){
-      try{ localStorage.setItem('ck_api', api); }catch(e){}
-      var q = '?api=' + encodeURIComponent(api);
-      document.getElementById('lnk-tunnel').href = 'creatikk_onboarding_prototype.html' + q;
-      document.getElementById('lnk-dash').href   = 'creatikk_dashboard_prototype.html' + q;
-    } else {
-      document.getElementById('note').innerHTML += '<br><b style="color:#e0a93a">⚠️ Aucun cerveau configuré (?api= manquant) — l\'IA tournera en mode secours.</b>';
-    }
+    if(!api){ try{ api = localStorage.getItem('ck_api'); }catch(e){} }
+    if(!api){ api = DEFAULT_API; }
+    try{ localStorage.setItem('ck_api', api); }catch(e){}
+    var q = '?api=' + encodeURIComponent(api);
+    document.getElementById('lnk-tunnel').href = 'creatikk_onboarding_prototype.html' + q;
+    document.getElementById('lnk-dash').href   = 'creatikk_dashboard_prototype.html' + q;
   })();
 </script>
 </body>
