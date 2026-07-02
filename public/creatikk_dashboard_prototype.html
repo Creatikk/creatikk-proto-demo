@@ -1304,11 +1304,12 @@
     return '<span class="tbadge">✨ Ton idée du jour</span><h2 style="opacity:.9">Ton coach prépare ton idée…</h2><p style="opacity:.75">Une idée taillée pour ton profil'+(curNicheKey?(' en « '+esc(NICHES[curNicheKey].name)+' »'):'')+', prête dans quelques secondes.</p><div class="idea-load"><span></span><span></span><span></span></div>';
   }
   var seenIdeas={}; // hooks déjà vus par profil → l'IA en propose un différent
-  async function loadDailyIdea(force){
+  async function loadDailyIdea(force, attempt){
     if(!cerveauOn()) return;
+    attempt = attempt || 0;
     var key=profileKey();
     if(!force && dailyIdeaCache[key]){ aiIdea=dailyIdeaCache[key]; var tcc=document.getElementById('todayCard'); if(tcc) tcc.innerHTML=ideaCardHTML(aiIdea.badge, aiIdea.hook, aiIdea.why); return; }
-    if(ideaLoading[key]) return;
+    if(attempt===0 && ideaLoading[key]) return;
     ideaLoading[key]=true;
     var tl=document.getElementById('todayCard'); if(tl) tl.innerHTML=loadingIdeaHTML();
     try{
@@ -1318,8 +1319,13 @@
       dailyIdeaCache[key]=aiIdea;
       seenIdeas[key]=(seenIdeas[key]||[]).concat(idea.hook).slice(-8); // mémorise pour éviter les répétitions
       var tc=document.getElementById('todayCard'); if(tc) tc.innerHTML=ideaCardHTML(aiIdea.badge, aiIdea.hook, aiIdea.why);
-    }catch(e){ var di=currentIdea(); aiIdea=null; var tx=document.getElementById('todayCard'); if(tx) tx.innerHTML=ideaCardHTML('🔥 Ton idée du jour', di.hook, di.why); }
-    delete ideaLoading[key];
+      delete ideaLoading[key];
+    }catch(e){
+      // Le serveur dort peut-être (réveil ~30-60 s) → on réessaie plutôt que d'afficher la version dégradée tout de suite.
+      if(attempt < 3){ setTimeout(function(){ loadDailyIdea(force, attempt+1); }, 5000); return; }
+      var di=currentIdea(); aiIdea=null; var tx=document.getElementById('todayCard'); if(tx) tx.innerHTML=ideaCardHTML('🔥 Ton idée du jour', di.hook, di.why);
+      delete ideaLoading[key];
+    }
   }
   function refreshIdea(){ delete dailyIdeaCache[profileKey()]; aiIdea=null; loadDailyIdea(true); }
 
@@ -2255,6 +2261,6 @@
   function openCreate(){ go('creer_start'); }
   function tgl(el){ el.classList.toggle('off'); }
 </script>
-<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 73 ✅</div>
+<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 74 ✅</div>
 </body>
 </html>
