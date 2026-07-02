@@ -1218,11 +1218,13 @@
   function buyCredits(n){ var b=document.getElementById('credBal'); if(b){ b.textContent=(parseInt(b.textContent,10)||0)+parseInt(n,10); } toggleCredits(); try{ confetti(); }catch(e){} }
   function setAccount(connected){
     connectedAccount = connected ? accountFromPreset(curAvatar) : null;
-    document.getElementById('dashFull').style.display = connected ? '' : 'none';
-    document.getElementById('dashEmpty').style.display = connected ? 'none' : '';
+    // L'idée du jour ne dépend PAS d'un compte connecté, juste d'une niche → on montre le dashboard complet dès qu'il y a une niche.
+    var showFull = connected || !!curNicheKey;
+    document.getElementById('dashFull').style.display = showFull ? '' : 'none';
+    document.getElementById('dashEmpty').style.display = showFull ? 'none' : '';
     var f=document.getElementById('acctFit'), b=document.getElementById('acctBiz');
     if(f) f.classList.toggle('on', connected); if(b) b.classList.toggle('on', !connected);
-    saveState(); renderAccountUI(); renderAccountToday();
+    saveState(); renderAccountUI(); renderToday();
     go('accueil');
   }
   function selChip(el){ el.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel')); el.classList.add('sel'); }
@@ -1358,7 +1360,8 @@
   // Bannière « connecte ton compte » : visible tant qu'on n'a pas relié un vrai compte. Garde niche + objectifs.
   function renderWelcomeBanner(){
     var el=document.getElementById('welcomeBanner'); if(!el) return;
-    if(!cameWithoutAccount || connectedAccount){ el.innerHTML=''; return; }
+    // Nudge « connecte ton compte » dès qu'on a une niche mais pas de compte relié (l'idée du jour reste visible en dessous).
+    if(connectedAccount || !curNicheKey){ el.innerHTML=''; return; }
     el.innerHTML='<div style="background:linear-gradient(120deg,rgba(20,127,251,.16),rgba(148,14,251,.16));border:1px solid rgba(148,14,251,.32);border-radius:16px;padding:15px;margin:4px 0 14px">'
       +'<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px"><span style="font-size:20px">🔗</span><b style="font-size:15.5px">Connecte ton compte pour tout synchroniser</b></div>'
       +'<p style="font-size:13px;color:#cdd0dc;line-height:1.5;margin:0 0 11px">Ta niche et tes objectifs sont déjà enregistrés. Connecte ton TikTok ou Insta pour que le coach travaille sur <b style="color:#fff">tes vraies stats</b> : score viral, progression auto, analyses sur TES vidéos et conseils calibrés sur ton compte.</p>'
@@ -2064,7 +2067,7 @@
     {sel:".coachcard",title:"2 · Ton coach IA",text:"Un coach IA qui te suit jour après jour : il te conseille et répond à toutes tes questions de créateur, 24/7. Parle-lui quand tu veux.",place:"bottom"},
     {sel:"#nav-plan",title:"3 · Ton planning",text:"Un plan de contenu sur 30 jours : quoi poster chaque jour, et pourquoi — avec une vraie progression.",place:"top"},
     {sel:".nav .plus",title:"4 · Créer quand tu veux",text:"Lance une vidéo à tout moment : depuis une idée, ton propre script, ou en important ta vidéo.",place:"top"},
-    {sel:"#nav-outils",title:"5 · Tes outils",text:"Le Studio génère ta vidéo de A à Z, l'Analyse teste tes vidéos (avant OU après publication), et les Tendances t'inspirent.",place:"top"},
+    {sel:"#nav-outils",title:"5 · Tes outils",text:"Tout pour créer, au même endroit : trouver ta niche, les Trends de ta niche, générer un Script, le Studio (texte → vidéo), l'Analyse (teste une vidéo avant OU après publication), et la Vidéo guidée pas à pas.",place:"top"},
     {sel:"#nav-profil",title:"6 · Ta stratégie",text:"Ton coach, tes conseils du moment, tes leçons et ton potentiel de revenus — tout ce qui te fait progresser, au même endroit.",place:"top"},
     {sel:".avwrap",title:"7 · Ton compte = ta niche",text:"Dans Creatikk, 1 compte = 1 niche : ton coach, tes idées, ton plan et tes revenus s'adaptent à CE compte. Tu peux en créer ou connecter plusieurs (une niche chacun) et basculer en 1 tap — touche ton avatar pour gérer tes comptes.",place:"bottom"},
     {sel:null,title:"Prêt à percer 🚀",text:"Tu as tout en main. Ton idée du jour t'attend — on y va ?",cta:"Commencer"}
@@ -2252,6 +2255,6 @@
   function openCreate(){ go('creer_start'); }
   function tgl(el){ el.classList.toggle('off'); }
 </script>
-<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 72 ✅</div>
+<div style="position:fixed;bottom:3px;left:5px;z-index:99999;font-size:10px;font-weight:800;color:#fff;background:#23c9a7;padding:2px 7px;border-radius:8px;opacity:.92;pointer-events:none">BUILD 73 ✅</div>
 </body>
 </html>
